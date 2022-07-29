@@ -13,14 +13,8 @@ const loginSlice = createSlice({
   initialState,
 
   reducers: {
-    stateChangeEmail: (state, action) => {
-      state.emailModal == action.payload;
-    },
-    stateChangeGoogle: (state, action) => {
-      state.googleModal == action.payload;
-    },
-    stateChangeApple: (state, action) => {
-      state.appleModal == action.payload;
+    stateChangeEmail: (state) => {
+      state.emailModal = !state.emailModal;
     },
   },
 });
