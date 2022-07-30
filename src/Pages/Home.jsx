@@ -9,8 +9,6 @@ import { stateChangeEmail } from '../Redux/loginSlice';
 const Home = () => {
   //?Fixed the issue of form not showing up
   const showEmailModal = useSelector((state) => state.login.emailModal);
-  console.log('asd' + showEmailModal);
-
   const dispatch = useDispatch();
 
   // const [showEmailModal, setShowEmailModal] = useState(false);

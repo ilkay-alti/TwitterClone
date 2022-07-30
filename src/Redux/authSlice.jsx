@@ -11,6 +11,10 @@ import { auth } from '../config/firebase';
 const initialState = {
   name: '',
   email: '',
+  phone: '',
+  mounth: '',
+  day: '',
+  year: '',
   password: '',
   error: null,
 };
@@ -58,6 +62,18 @@ const authSlice = createSlice({
     changePassword: (state, action) => {
       state.password = action.payload;
     },
+    changePhone: (state, action) => {
+      state.phone = action.payload;
+    },
+    changeMounth: (state, action) => {
+      state.mounth = action.payload;
+    },
+    changeDay: (state, action) => {
+      state.day = action.payload;
+    },
+    changeYear: (state, action) => {
+      state.year = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -70,6 +86,14 @@ const authSlice = createSlice({
   },
 });
 
-export const { changeName, changeEmail, changePassword } = authSlice.actions;
+export const {
+  changeName,
+  changeYear,
+  changeDay,
+  changeMounth,
+  changePhone,
+  changeEmail,
+  changePassword,
+} = authSlice.actions;
 
 export default authSlice.reducer;
