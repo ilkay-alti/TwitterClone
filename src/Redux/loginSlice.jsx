@@ -5,6 +5,7 @@ const initialState = {
   emailModal: false,
   googleModal: false,
   appleModal: false,
+  page: 0,
 };
 //create the slice
 
@@ -16,10 +17,17 @@ const loginSlice = createSlice({
     stateChangeEmail: (state) => {
       state.emailModal = !state.emailModal;
     },
+    stateChangePage: (state, action) => {
+      state.page = action.payload;
+    },
   },
 });
 
-export const { stateChangeEmail, stateChangeGoogle, stateChangeApple } =
-  loginSlice.actions;
+export const {
+  stateChangeEmail,
+  stateChangeGoogle,
+  stateChangeApple,
+  stateChangePage,
+} = loginSlice.actions;
 
 export default loginSlice.reducer;

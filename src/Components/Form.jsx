@@ -6,7 +6,8 @@ import OtherInfo from './register/OtherInfo';
 import Close from '../Assets/Close.svg';
 import BackArrow from '../Assets/BackArrow.svg';
 import { useDispatch } from 'react-redux';
-import { stateChangeEmail } from '../Redux/loginSlice';
+import { stateChangeEmail, stateChangePage } from '../Redux/loginSlice';
+
 const Form = () => {
   const [page, setPage] = useState(0);
   const FormTitles = ['Create your account', 'Personal Info', 'Other'];
@@ -65,7 +66,7 @@ const Form = () => {
         </div>
 
         {/* //!Footer */}
-        <div className="px-20">
+        <div className="px-20 ">
           <button
             disabled={page === FormTitles.length - 1}
             onClick={() => {
@@ -73,7 +74,7 @@ const Form = () => {
             }}
             className="w-full h-[50px] bg-white rounded-full text-black my-6  "
           >
-            Next
+            {page === 0 ? 'Next' : page === 1 ? 'Sign Up' : 'Finish'}
           </button>
         </div>
       </div>

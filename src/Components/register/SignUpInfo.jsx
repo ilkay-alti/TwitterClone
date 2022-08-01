@@ -96,9 +96,9 @@ const SignUpInfo = () => {
       <InputArea type="text" placeholder="Name" maxLength="50" />
 
       {switchState ? (
-        <InputArea type="tel" placeholder="Phone" maxLength="18" />
+        <InputArea type="tel" placeholder="Phone" maxLength="30" />
       ) : (
-        <InputArea type="text" placeholder="Email" maxLength="50" />
+        <InputArea type="text" placeholder="Email" maxLength="30" />
       )}
       <div className="text-right">
         <span
@@ -107,7 +107,7 @@ const SignUpInfo = () => {
           }}
           className="cursor-pointer text-[#1D9BF0] underline-offset-2  "
         >
-          Use email instead
+          {switchState ? 'Switch to email' : 'Switch to phone'}
         </span>
       </div>
       <div className="mt-5">
