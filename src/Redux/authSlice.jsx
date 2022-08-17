@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createAsyncThunk,
+  isRejectedWithValue,
+} from '@reduxjs/toolkit';
 import {
   createUserWithEmailAndPassword,
   updateCurrentUser,
@@ -11,11 +15,11 @@ import { auth } from '../config/firebase';
 const initialState = {
   name: '',
   email: '',
+  password: '',
   phone: '',
   mounth: '',
   day: '',
   year: '',
-  password: '',
   error: null,
 };
 //create Thunk
@@ -25,7 +29,9 @@ export const register = createAsyncThunk(
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      updateCurrentUser(auth, { displayName: name });
+      updateCurrentUser(auth, {
+        displayName: name,
+      });
     } catch (error) {
       return rejectWithValue(error.code);
     }
@@ -88,12 +94,12 @@ const authSlice = createSlice({
 
 export const {
   changeName,
-  changeYear,
-  changeDay,
-  changeMounth,
-  changePhone,
   changeEmail,
   changePassword,
+  changePhone,
+  changeMounth,
+  changeDay,
+  changeYear,
 } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -119,6 +119,7 @@ const SignUpInfo = () => {
           account is for a business, a pet, or something else.
         </p>
       </div>
+
       <div className="my-4 flex flex-row gap-x-4">
         <DateArea dataSource={mounth} placeholder="Mounth" css=" basis-1/2" />
         <DateArea dataSource={day} placeholder="Day" css=" basis-1/4" />

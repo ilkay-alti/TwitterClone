@@ -1,6 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeEmail, changePhone, changeName } from '../Redux/authSlice';
+import {
+  changeEmail,
+  changePhone,
+  changeName,
+  changePassword,
+} from '../Redux/authSlice';
 
 export default function InputArea({ ...props }) {
   const [leng, setleng] = React.useState(0);
@@ -18,9 +23,12 @@ export default function InputArea({ ...props }) {
       dispatch(changePhone(e.target.value));
       setleng(e.target.value.length);
     }
+    if (props.placeholder === 'Password') {
+      dispatch(changePassword(e.target.value));
+      setleng(e.target.value.length);
+    }
   };
 
-  console.log(useSelector((state) => state.auth));
   return (
     <label className="block relative py-3 ">
       <input

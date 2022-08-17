@@ -1,23 +1,22 @@
 //firebase
 
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateCurrentUser,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
+
+import { getAuth } from 'firebase/auth';
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyD4PQkPIfcDB7xZlK_Hmakm0HZbUlfpd7E',
-  authDomain: 'twitterrrrr-a7b69.firebaseapp.com',
-  projectId: 'twitterrrrr-a7b69',
-  storageBucket: 'twitterrrrr-a7b69.appspot.com',
-  messagingSenderId: '845447790177',
-  appId: '1:845447790177:web:3a39bd689254c1210cf420',
+  apiKey: 'AIzaSyCZpcejdunWhUK7fcitwJ3XKOO_-E2u9Mw',
+  authDomain: 'product-1-ce65d.firebaseapp.com',
+  projectId: 'product-1-ce65d',
+  storageBucket: 'product-1-ce65d.appspot.com',
+  messagingSenderId: '684709733624',
+  appId: '1:684709733624:web:89ada8d265a95479e6c70d',
+  measurementId: 'G-EH76K7P2HT',
 };
 
 const app = initializeApp(firebaseConfig);
-getAnalytics(app);
 export const auth = getAuth(app);
+// auth.onAuthStateChanged((user) => {
+//   console.log('Auth state changed');
+//   console.log(user);
+// });

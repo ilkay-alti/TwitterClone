@@ -20,7 +20,7 @@ export default function DateArea({ ...props }) {
       setFocus(true);
     }
   };
-  console.log(useSelector((state) => state.auth));
+
   return (
     <label className={`${props.css} relative block`}>
       <select

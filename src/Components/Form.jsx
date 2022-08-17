@@ -2,17 +2,30 @@ import React from 'react';
 import { useState } from 'react';
 import SignUpInfo from './register/SignUpInfo';
 import PersonalInfo from './register/PersonalInfo';
-import OtherInfo from './register/OtherInfo';
+import PersonalPassword from './register/PersonalPassword';
 import Close from '../Assets/Close.svg';
 import BackArrow from '../Assets/BackArrow.svg';
-import { useDispatch } from 'react-redux';
-import { stateChangeEmail, stateChangePage } from '../Redux/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { stateChangeEmail } from '../Redux/loginSlice';
+import { register } from '../Redux/authSlice';
 
 const Form = () => {
   const [page, setPage] = useState(0);
-  const FormTitles = ['Create your account', 'Personal Info', 'Other'];
+  const FormTitles = [
+    'Create your account',
+    'Personal Info',
+    'Personal Password',
+  ];
+  const name = useSelector((state) => state.auth.name);
+  const email = useSelector((state) => state.auth.email);
+  const password = useSelector((state) => state.auth.password);
+  const err = useSelector((state) => state.auth.error);
 
   const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch(register({ name, email, password }));
+  };
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -20,7 +33,7 @@ const Form = () => {
     } else if (page === 1) {
       return <PersonalInfo />;
     } else {
-      return <OtherInfo />;
+      return <PersonalPassword />;
     }
   };
   return (
@@ -61,6 +74,7 @@ const Form = () => {
             <h1 className="h-[76px] flex items-center text-[31px] font-bold text-white">
               {FormTitles[page]}
             </h1>
+            {err && <div className="text-red-500">{err}</div>}
             {PageDisplay()}
           </div>
         </div>
@@ -68,13 +82,15 @@ const Form = () => {
         {/* //!Footer */}
         <div className="px-20 ">
           <button
-            disabled={page === FormTitles.length - 1}
             onClick={() => {
-              setPage(page + 1);
+              page === FormTitles.length - 1
+                ? handleSubmit()
+                : setPage(page + 1);
             }}
+            disabled={page === FormTitles.length + 1}
             className="w-full h-[50px] bg-white rounded-full text-black my-6  "
           >
-            {page === 0 ? 'Next' : page === 1 ? 'Sign Up' : 'Finish'}
+            {page === 2 ? 'Sign Up' : 'Next'}
           </button>
         </div>
       </div>
